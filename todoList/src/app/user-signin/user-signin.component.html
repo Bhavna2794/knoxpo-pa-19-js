@@ -1,0 +1,49 @@
+<section id="ngx">
+  <div class="cardContainer card">
+    <div class="card-body">
+      <div class="card-block">
+          <form #loginForm="ngForm" class="editForm" (ngSubmit)="onSubmitLoginDetails(loginForm.value)">
+              <div style="text-align: center;">
+                  <img style="width: 80px;height: 64px;" src="../../assets/image/signIn.jpg">
+              </div>
+              <h5 style="text-align: center" class="head">Please Login</h5>
+              <div class='row'>
+                  <div class='col-12'>
+                      <div class="row">
+                          <div class='col-12'>
+                              <div class="form-group" style="margin-bottom: 15px;">
+                                  <label class="form-control-label" for="email">Email</label>
+                                  <input class="form-control input-md" ngModel #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required id="email" name="email" type="text">
+                                  <small class="form-text text-muted danger" [hidden]="email.valid || email.untouched">
+                                      <small class="form-text text-muted danger" *ngIf="email.errors && email.errors.required">Email is required</small>
+                                      <small class="form-text text-muted danger" *ngIf="email.errors && email.errors.pattern">Email is invalid</small>
+                                  </small>
+                              </div>
+                          </div>
+                          <div class='col-12'>
+                              <div class="form-group">
+                                  <label class="form-control-label" for="password">Password</label>
+                                  <input class="form-control input-md" ngModel #password="ngModel" passwordToggle required id="password" name="password" type="password">
+                                  <small class="form-text text-muted danger" *ngIf="!password.valid && (password.dirty || password.touched)">Please enter a password!</small>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-12">
+                              <button type="submit" class="btn btn-submit btn-block btn-raised" [disabled]="!loginForm.valid"><i *ngIf="showSpinner" class="fa fa-spinner fa-spin"></i>Submit</button>
+                              <button type="reset" class="btn btn-secondary btn-block btn-raised">Cancel</button>
+                          </div>
+                      </div>
+
+                      <div class="card-footer bg-blue-grey bg-darken-3">
+                          <div style="text-align: center;" class="link center"><a (click)="onRegister()">New with us? Signup</a></div>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</section>
+
